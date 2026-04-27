@@ -1,0 +1,120 @@
+:host {
+  display: block;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  min-height: var(--row-height-desktop);
+  padding: 8px 12px;
+  gap: 10px;
+  border-bottom: 1px solid var(--color-hairline);
+  background: color-mix(in oklab, var(--color-sage-soft) 60%, transparent);
+}
+
+.handle {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-faint);
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+
+.check {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-hairline-strong);
+  flex-shrink: 0;
+}
+
+.field {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  border: 1px solid var(--color-hairline-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  padding: 6px 8px;
+  outline: none;
+  transition:
+    border-color var(--duration-fast) ease-out,
+    box-shadow var(--duration-fast) ease-out;
+}
+
+.field:focus,
+.field:focus-visible {
+  border-color: var(--color-sage);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.field--name {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  min-width: 0;
+}
+
+.field--amount {
+  width: 120px;
+  font-size: 13px;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+
+.btn {
+  font: 500 13px/1 var(--font-sans);
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background var(--duration-fast) ease-out;
+  border: 0;
+}
+
+.btn--save {
+  color: var(--color-surface);
+  background: var(--color-sage);
+}
+
+.btn--save:hover:not(:disabled),
+.btn--save:focus-visible:not(:disabled) {
+  background: var(--color-sage-hover);
+}
+
+.btn--save:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn--cancel {
+  color: var(--color-text-muted);
+  background: transparent;
+  padding: 7px 10px;
+}
+
+.btn--cancel:hover {
+  color: var(--color-text);
+  background: color-mix(in oklab, var(--color-hairline) 60%, transparent);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+@media (max-width: 480px) {
+  .row {
+    padding: 8px 14px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .field--name {
+    font-size: 16px;
+  }
+  .field--amount {
+    width: 96px;
+    font-size: 16px;
+  }
+}

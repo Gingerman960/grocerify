@@ -1,0 +1,120 @@
+:host {
+  display: block;
+  padding-bottom: 18px;
+}
+
+.wrap {
+  display: flex;
+  align-items: stretch;
+  background: var(--color-surface);
+  border: 1px solid var(--color-hairline-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition:
+    border-color var(--duration-normal) ease-out,
+    box-shadow var(--duration-normal) ease-out;
+}
+
+.wrap:focus-within {
+  border-color: var(--color-sage);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.leading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.wrap:focus-within .leading {
+  color: var(--color-sage);
+}
+
+.field {
+  border: none;
+  outline: none;
+  background: transparent;
+  font: 500 15px/1 var(--font-sans);
+  color: var(--color-text);
+  padding: 12px 0;
+  min-width: 0;
+}
+
+.field::placeholder {
+  color: var(--color-text-faint);
+  font-weight: 400;
+}
+
+.field--name {
+  flex: 1;
+}
+
+.field--amount {
+  width: 100px;
+  font-weight: 400;
+  font-size: 13px;
+  padding: 12px 12px;
+  flex-shrink: 0;
+}
+
+.divider {
+  width: 1px;
+  background: var(--color-hairline);
+  margin: 8px 0;
+  flex-shrink: 0;
+}
+
+.add {
+  font: 500 13px/1 var(--font-sans);
+  color: var(--color-surface);
+  background: var(--color-sage);
+  border: 0;
+  padding: 0 18px;
+  margin: 5px;
+  border-radius: var(--radius-sm);
+  min-width: 72px;
+  cursor: pointer;
+  transition: background var(--duration-fast) ease-out;
+  flex-shrink: 0;
+}
+
+.add:hover:not(:disabled),
+.add:focus-visible:not(:disabled) {
+  background: var(--color-sage-hover);
+}
+
+.add:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+.add:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  :host {
+    padding: 0 16px 18px;
+  }
+  .leading {
+    width: 52px;
+    padding-left: 12px;
+  }
+  .field {
+    padding: 14px 0;
+    font-size: 16px;
+  }
+  .field--amount {
+    width: 88px;
+    padding: 14px 12px;
+    font-size: 16px;
+  }
+  .add {
+    padding: 0 14px;
+    min-width: 64px;
+  }
+}

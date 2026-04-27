@@ -1,0 +1,43 @@
+@let i = item();
+
+<div class="row">
+  <button type="button" cdkDragHandle class="handle" aria-label="Reorder item">
+    <app-icon name="drag" />
+  </button>
+
+  <button
+    type="button"
+    class="check"
+    role="checkbox"
+    [class.check--on]="i.bought"
+    [attr.aria-checked]="i.bought"
+    [attr.aria-label]="'Mark ' + i.name + (i.bought ? ' as not bought' : ' as bought')"
+    (click)="toggleBought.emit(i.id)"
+  >
+    @if (i.bought) {
+      <app-icon name="check" [size]="14" [strokeWidth]="2" />
+    }
+  </button>
+
+  <span class="name" [class.name--struck]="i.bought">{{ i.name }}</span>
+  <span class="amount">{{ i.amount }}</span>
+
+  <span class="actions">
+    <button
+      type="button"
+      class="icon-btn"
+      [attr.aria-label]="'Edit ' + i.name"
+      (click)="startEdit.emit(i.id)"
+    >
+      <app-icon name="edit" [size]="16" />
+    </button>
+    <button
+      type="button"
+      class="icon-btn"
+      [attr.aria-label]="'Delete ' + i.name"
+      (click)="remove.emit(i.id)"
+    >
+      <app-icon name="trash" [size]="16" />
+    </button>
+  </span>
+</div>

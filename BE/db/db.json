@@ -1,0 +1,88 @@
+{
+  "items": [
+    {
+      "id": "seed-01",
+      "name": "Sourdough bread",
+      "amount": "1 loaf",
+      "bought": true,
+      "order": 1000
+    },
+    {
+      "id": "seed-02",
+      "name": "Bananas",
+      "amount": "6 pcs",
+      "bought": true,
+      "order": 2000
+    },
+    {
+      "id": "seed-03",
+      "name": "Whole milk",
+      "amount": "1 L",
+      "bought": false,
+      "order": 3000
+    },
+    {
+      "id": "seed-04",
+      "name": "Free-range eggs",
+      "amount": "12 pcs",
+      "bought": false,
+      "order": 4000
+    },
+    {
+      "id": "seed-05",
+      "name": "Sharp cheddar",
+      "amount": "250 g",
+      "bought": true,
+      "order": 5000
+    },
+    {
+      "id": "seed-06",
+      "name": "Roma tomatoes",
+      "amount": "500 g",
+      "bought": false,
+      "order": 6000
+    },
+    {
+      "id": "seed-07",
+      "name": "Olive oil",
+      "amount": "500 ml",
+      "bought": false,
+      "order": 7000
+    },
+    {
+      "id": "seed-08",
+      "name": "Ground coffee",
+      "amount": "340 g",
+      "bought": false,
+      "order": 8000
+    },
+    {
+      "id": "seed-09",
+      "name": "Basmati rice",
+      "amount": "1 kg",
+      "bought": false,
+      "order": 9000
+    },
+    {
+      "id": "seed-10",
+      "name": "Greek yogurt",
+      "amount": "500 g",
+      "bought": true,
+      "order": 10000
+    },
+    {
+      "id": "d3ce4577-7755-4a9b-97c7-c8f60aa42e31",
+      "name": "aaaaa",
+      "amount": "",
+      "bought": false,
+      "order": 11000
+    },
+    {
+      "id": "5ca3d7ff-e847-4abb-a5e2-63c635b5c48c",
+      "name": "asdaASD",
+      "amount": "",
+      "bought": false,
+      "order": 12000
+    }
+  ]
+}

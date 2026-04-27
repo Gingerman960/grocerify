@@ -1,0 +1,58 @@
+@let progress = store.progress();
+@let isLoading = store.isLoading();
+@let error = store.error();
+@let isEmpty = store.isEmpty();
+@let pendingDeletes = store.pendingDeletes();
+@let editingId = store.editingId();
+
+<main class="page">
+  <div class="container">
+    <app-list-header [progress]="progress" />
+
+    @if (error) {
+      <app-error-banner [message]="error" (retry)="store.loadAll()" />
+    }
+
+    <app-add-item-input (add)="store.addItem($event)" />
+
+    @if (isLoading) {
+      <app-list-skeleton />
+    } @else if (isEmpty) {
+      <app-empty-state />
+    } @else {
+      <section class="card" aria-label="Grocery items">
+        <app-column-header />
+        <ul cdkDropList class="list" (cdkDropListDropped)="onDrop($event)">
+          @for (item of store.sortedItems(); track item.id) {
+            <li cdkDrag [cdkDragDisabled]="editingId === item.id" class="list-item">
+              @if (editingId === item.id) {
+                <app-grocery-item-row-edit
+                  [item]="item"
+                  (commit)="onCommitEdit($event)"
+                  (cancelled)="store.cancelEdit()"
+                />
+              } @else {
+                <app-grocery-item-row
+                  [item]="item"
+                  (toggleBought)="store.toggleBought($event)"
+                  (startEdit)="store.startEdit($event)"
+                  (remove)="store.requestDelete($event)"
+                />
+              }
+            </li>
+          }
+        </ul>
+      </section>
+
+      <p class="footer">{{ itemCountLabel() }}</p>
+    }
+  </div>
+
+  @if (pendingDeletes.length > 0) {
+    <div class="toast-stack" aria-live="polite">
+      @for (item of pendingDeletes; track item.id) {
+        <app-undo-toast [itemName]="item.name" (undo)="store.undoDelete(item.id)" />
+      }
+    </div>
+  }
+</main>

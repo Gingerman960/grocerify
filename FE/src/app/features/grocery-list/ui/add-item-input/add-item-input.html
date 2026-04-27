@@ -1,0 +1,26 @@
+<form class="wrap" (submit)="onSubmit($event)">
+  <span class="leading">
+    <app-icon name="plus" [size]="15" />
+  </span>
+
+  <input
+    #nameInput
+    type="text"
+    placeholder="Add an item…"
+    aria-label="Item name"
+    class="field field--name"
+    [formField]="addForm.name"
+  />
+
+  <span class="divider" aria-hidden="true"></span>
+
+  <input
+    type="text"
+    placeholder="Amount"
+    aria-label="Amount"
+    class="field field--amount"
+    [formField]="addForm.amount"
+  />
+
+  <button type="submit" class="add" [disabled]="addForm().invalid()">Add</button>
+</form>

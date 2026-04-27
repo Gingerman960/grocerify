@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.banner {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--color-error);
+  background: var(--color-error-soft);
+  border-radius: var(--radius-md);
+  font: 400 13px/1.4 var(--font-sans);
+  color: var(--color-error);
+}
+
+.msg {
+  flex: 1;
+  color: var(--color-text-on-error);
+}
+
+.retry {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font: 500 13px/1 var(--font-sans);
+  color: var(--color-error);
+  border: 1px solid color-mix(in oklab, var(--color-error) 50%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background var(--duration-fast) ease-out;
+}
+
+.retry:hover,
+.retry:focus-visible {
+  background: color-mix(in oklab, var(--color-error) 8%, transparent);
+}
+
+.retry:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+@media (max-width: 480px) {
+  :host {
+    margin: 0 16px 12px;
+  }
+}

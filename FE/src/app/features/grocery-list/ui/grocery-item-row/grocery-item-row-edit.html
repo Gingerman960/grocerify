@@ -1,0 +1,25 @@
+<form class="row" (submit)="onSubmit($event)">
+  <span class="handle" aria-hidden="true">
+    <app-icon name="drag" />
+  </span>
+
+  <span class="check check--editing" aria-hidden="true"></span>
+
+  <input
+    #nameInput
+    type="text"
+    class="field field--name"
+    aria-label="Item name"
+    [formField]="editForm.name"
+  />
+
+  <input
+    type="text"
+    class="field field--amount"
+    aria-label="Amount"
+    [formField]="editForm.amount"
+  />
+
+  <button type="submit" class="btn btn--save" [disabled]="editForm().invalid()">Save</button>
+  <button type="button" class="btn btn--cancel" (click)="cancelled.emit()">Cancel</button>
+</form>

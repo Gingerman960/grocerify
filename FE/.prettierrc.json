@@ -1,0 +1,12 @@
+{
+  "_comment": "Drop this in as .prettierrc.json. The global config-protection hook blocked Claude from writing the real file — copy this manually or disable that hook temporarily.",
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "semi": true,
+  "tabWidth": 2,
+  "bracketSameLine": false,
+  "overrides": [
+    { "files": "*.html", "options": { "parser": "angular" } }
+  ]
+}

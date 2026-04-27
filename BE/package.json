@@ -1,0 +1,12 @@
+{
+  "name": "grocerify-be",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mock REST API for the Grocerify POC, backed by json-server.",
+  "scripts": {
+    "start": "json-server --watch db/db.json --port 3001"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

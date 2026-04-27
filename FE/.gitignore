@@ -1,0 +1,27 @@
+node_modules/
+dist/
+.angular/
+coverage/
+.DS_Store
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Personal Claude overrides — never commit
+.claude/CLAUDE.local.md
+
+# Vitest cache
+.vitest/
+
+# Playwright
+playwright-report/
+test-results/
+.playwright/
+
+# Env (no secrets in this POC, but never commit anyway)
+.env
+.env.*
+!.env.example

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read(./src/**)",
+      "Read(./public/**)",
+      "Read(./*.json)",
+      "Read(./*.md)",
+      "Read(./*.ts)",
+      "Read(./*.js)",
+      "Read(./*.mjs)",
+      "Read(./.eslintrc*)",
+      "Read(./eslint.config*)",
+      "Read(./db/**)",
+      "Read(./.claude/**)",
+      "Write(./src/**)",
+      "Write(./db/**)",
+      "Write(./*.md)",
+      "Write(./eslint.config.*)",
+      "Write(./.prettierrc*)",
+      "Write(./vitest.config.*)",
+      "Bash(ng *)",
+      "Bash(npx *)",
+      "Bash(node *)",
+      "Bash(npm run *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout -b *)",
+      "Bash(git branch *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(find *)",
+      "Bash(tree *)",
+      "Bash(mkdir *)",
+      "Bash(touch *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./**/*.pem)",
+      "Read(./**/*.key)",
+      "Write(./.env*)",
+      "Write(./node_modules/**)",
+      "Write(./dist/**)",
+      "Write(./.angular/**)",
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(git push *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean *)",
+      "Bash(sudo *)",
+      "Bash(curl *)",
+      "Bash(wget *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-write-guard.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-edit-format.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/stop-typecheck.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
