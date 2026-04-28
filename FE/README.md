@@ -141,10 +141,6 @@ The math lives in `data-access/grocery-list.utils.ts` (`orderBetween`, `nextOrde
 
 Plain JS `number` runs out of precision after ~50 swaps between the same two neighbours. For a portfolio piece that's fine — the tests document the math. The production upgrade is **lexicographic string keys** ([fractional-indexing](https://github.com/rocicorp/fractional-indexing)): same algorithm, unbounded depth. The only change would be the `order` column type and the helper bodies; the store API and the UI would be unaffected.
 
-### Drag-drop ↔ virtual scroll
-
-CDK has a [known unresolved interaction](https://github.com/angular/components/issues/22406) between `cdkVirtualFor` and `cdkDrag`. The list size in this app is bounded (≤ a few hundred items, in practice), so we render the full list and use the standard scrollbar. If the data grew an order of magnitude larger, the right answer is to **disable reorder while virtual scrolling is engaged** rather than risk the broken interaction. This decision is intentional — it's not a gap to fill in the POC.
-
 ---
 
 ## <a id="undo-design"></a>Undo design
@@ -219,7 +215,7 @@ npm run typecheck   # tsc --noEmit
 DB reset is **file-based** (the fixture writes `BE/db/db.json` directly and waits for json-server to reload). Side effect: e2e runs leave the dev seed overwritten with the e2e seed — restore from git when switching back to manual exploration.
 
 What's intentionally **not** covered:
-- The full smart container's branching across all eight design states. Visual regression would catch it more cheaply than DOM assertions; out of POC scope.
+- The full smart container's branching across all eight design states. Visual regression would catch it more cheaply than DOM assertions;
 - Per-row inline-edit interaction in e2e (covered by the row-edit unit spec).
 
 ---
@@ -243,7 +239,6 @@ What's intentionally **not** covered:
 | Mock API | json-server in `../BE` | Real backend; auth; rate limits |
 | Ordering | `number` midpoints | Lexicographic string keys (unbounded precision) |
 | Undo timer | In-memory `setTimeout` | Server-side soft-delete column with a TTL |
-| List rendering | Full DOM list | `cdkVirtualFor` once items > a few hundred — and reorder gets disabled while virtualized |
 | Signal Forms | Single-shot inputs | Reusable form primitives, dirty-state-aware reset |
 | API errors | Single global error banner | Per-mutation toasts; retry queue |
 | Auth | None | Sign-in, per-user lists, sharing |

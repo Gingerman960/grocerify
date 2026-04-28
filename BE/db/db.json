@@ -69,20 +69,6 @@
       "amount": "500 g",
       "bought": true,
       "order": 10000
-    },
-    {
-      "id": "d3ce4577-7755-4a9b-97c7-c8f60aa42e31",
-      "name": "aaaaa",
-      "amount": "",
-      "bought": false,
-      "order": 11000
-    },
-    {
-      "id": "5ca3d7ff-e847-4abb-a5e2-63c635b5c48c",
-      "name": "asdaASD",
-      "amount": "",
-      "bought": false,
-      "order": 12000
     }
   ]
 }

@@ -8,12 +8,14 @@ test.describe('delete + undo', () => {
   test('undo before timeout restores the row at its original index', async ({ page }) => {
     await page.goto('/');
     const items = page.getByRole('listitem');
+    // Wait for the seeded list to fully render before measuring.
+    await expect(items).toHaveCount(SEED_ITEMS.length);
+
     const sorted = [...SEED_ITEMS].sort((a, b) => a.order - b.order);
     const target = sorted[2]!;
 
-    const originalCount = await items.count();
     await deleteItem(page, target.name);
-    await expect(items).toHaveCount(originalCount - 1);
+    await expect(items).toHaveCount(SEED_ITEMS.length - 1);
 
     const toast = page.getByRole('status');
     await expect(toast).toContainText(target.name);
@@ -21,7 +23,7 @@ test.describe('delete + undo', () => {
     await page.waitForTimeout(SHORT_UNDO_MS);
     await toast.getByRole('button', { name: 'Undo' }).click();
 
-    await expect(items).toHaveCount(originalCount);
+    await expect(items).toHaveCount(SEED_ITEMS.length);
     await expect(items.nth(2)).toContainText(target.name);
 
     // No DELETE was sent — server still has it.

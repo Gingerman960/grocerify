@@ -25,7 +25,7 @@
             "polyfills": [],
             "tsConfig": "tsconfig.app.json",
             "assets": [{ "glob": "**/*", "input": "public" }],
-            "styles": ["src/styles.scss"],
+            "styles": ["@fontsource-variable/inter/wght.css", "src/styles.scss"],
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": ["src/styles"]
