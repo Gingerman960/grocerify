@@ -1,0 +1,6 @@
+<form class="wrap" (submit)="onSubmit($event)">
+  <input #searchQuery type="text" placeholder="Search an item…" aria-label="Item search" class="field field--search"
+    [formField]="searchForm.search" />
+
+  <button type="submit" class="add" [disabled]="searchForm().invalid()">Search</button>
+</form>

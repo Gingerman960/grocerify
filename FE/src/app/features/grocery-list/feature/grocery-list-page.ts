@@ -14,6 +14,7 @@ import { ListHeader } from '../ui/list-header/list-header';
 import { ListSkeleton } from '../ui/list-skeleton/list-skeleton';
 import { UndoToast } from '../ui/undo-toast/undo-toast';
 import { GroceryListStore } from '../data-access/grocery-list.store';
+import { SearchComponent } from '../ui/search/search';
 
 @Component({
   selector: 'app-grocery-list-page',
@@ -21,6 +22,7 @@ import { GroceryListStore } from '../data-access/grocery-list.store';
     CdkDropList,
     CdkDrag,
     AddItemInput,
+    SearchComponent,
     ColumnHeader,
     EmptyState,
     ErrorBanner,

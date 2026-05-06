@@ -26,4 +26,8 @@ export class GroceryListApi {
   delete(id: string): Observable<void> {
     return this.#http.delete<void>(`${this.#base}/items/${id}`);
   }
+
+  search(query: string): Observable<GroceryItem[]> {
+    return this.#http.get<GroceryItem[]>(`${this.#base}/items?name_like=${query}`);
+  }
 }

@@ -16,7 +16,7 @@ import {
   withEntities,
 } from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { EMPTY, exhaustMap, pipe, switchMap, tap } from 'rxjs';
+import { debounceTime, EMPTY, exhaustMap, pipe, switchMap, tap } from 'rxjs';
 
 import { GroceryListApi } from './grocery-list.api';
 import { createDeleteOps } from './grocery-list.delete-helpers';
@@ -155,12 +155,26 @@ export const GroceryListStore = signalStore(
       ),
     );
 
+    const searchItems = rxMethod<any>(
+      pipe(
+        switchMap((search) => {
+          return api.search(search).pipe(
+            tapResponse({
+              next: (items) => patchState(store, setAllEntities(items)),
+              error: setError,
+            }),
+          );
+        }),
+      ),
+    );
+
     return {
       loadAll,
       addItem,
       toggleBought,
       editItem,
       reorder,
+      searchItems,
       ...deleteOps,
       startEdit: (id: string) => patchState(store, { editingId: id }),
       cancelEdit: () => patchState(store, { editingId: null }),
